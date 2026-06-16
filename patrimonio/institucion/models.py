@@ -15,13 +15,13 @@ class Museo(models.Model):
 
     def obtener_costo_total_exhibiciones(self):
         total = 0
-        for guia in self.gui_museo_set.all():
+        for guia in self.guiamuseo_set.all():
             for exhibicion in guia.exhibicion_set.all():
                 total = total + exhibicion.costo_produccion
         return total
 
     def obtener_guia_mas_experiencia(self):
-        guia = self.gui_museo_set.order_by('-anios_experiencia_guia').first()
+        guia = self.guiamuseo_set.order_by('-anios_experiencia_guia').first()
         if guia:
             return guia.nombre_completo
         return "Sin guías"
